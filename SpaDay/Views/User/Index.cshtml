@@ -1,0 +1,20 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@foreach(var name in ViewBag.UserData)
+{
+    ViewBag.name = name.uname;
+    ViewBag.emial = name.email;
+    ViewBag.Date = name.join;
+}
+
+<h1>Welcome, @ViewBag.name!</h1>
+
+
+
+<a href="~/Spa/Index">Spa Form</a>
+
+
+<footer>@ViewBag.emial you joined on @ViewBag.Date</footer>

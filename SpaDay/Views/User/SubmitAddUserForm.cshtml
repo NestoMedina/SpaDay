@@ -1,0 +1,28 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1>Create Your Profile</h1>
+
+<p>Your Password did not match! Please re-enter your password!</p>
+
+<form method="post" action="/user/submitadduserform">
+    <label for="uname">First Name</label>
+    <input type="text" name="uname" value="@ViewBag.userinfo.uname"/>
+    <label for="ulname">Last Name</label>
+    <input type="text" name="ulname" value="@ViewBag.userinfo.ulname"/>
+    <label for="email">Enter Your Email</label>
+    <input type="email" name="email" value="@ViewBag.userinfo.email"/>
+
+    <label for="pword">Password</label>
+    <input type="password" name="pword" />
+    <label for="verify">Re-enter Password</label>
+    <input type="password" name="verify" />
+
+
+
+    <input type="submit" value="Submit" />
+</form>
