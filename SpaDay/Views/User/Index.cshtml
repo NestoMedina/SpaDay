@@ -1,20 +1,20 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@foreach(var name in ViewBag.UserData)
+﻿@model List<User>
+@foreach (User item in Model)
 {
-    ViewBag.name = name.uname;
-    ViewBag.emial = name.email;
-    ViewBag.Date = name.join;
+    ViewBag.fname = item.FirstName;
+    ViewBag.email = item.Email;
+    ViewBag.Date = item.join;
 }
 
-<h1>Welcome, @ViewBag.name!</h1>
+<h1>Welcome, @ViewBag.fname!</h1>
 
 
 
-<a href="~/Spa/Index">Spa Form</a>
+<a href="/Spa">Spa Form</a>
 
 
-<footer>@ViewBag.emial you joined on @ViewBag.Date</footer>
+<footer>Email Address: @ViewBag.email
+    <div>
+    Member since: @ViewBag.Date    
+    </div>
+</footer>

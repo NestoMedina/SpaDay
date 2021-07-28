@@ -12,9 +12,9 @@ namespace SpaDay.Data
 
         public static void AddUser(User newUser, string verify)
         {
-            if (verify == newUser.pword)
+            if (verify == newUser.Password)
             {
-            _userList.Add(newUser.email, newUser);
+            _userList.Add(newUser.Email, newUser);
             }
         }
 

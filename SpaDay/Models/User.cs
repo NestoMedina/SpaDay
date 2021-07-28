@@ -7,24 +7,27 @@ namespace SpaDay.Models
 {
     public class User
     {
-        public string uname { get; set; }
-        public string ulname { get; set; }
-        public string email { get; set; }
-        public string pword { get; set; }
+        public string Username { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
 
         public DateTime join { get; set; }
 
         public User()
         {
-            this.join = DateTime.Today;
+            this.join = DateTime.Now;
         }
 
-        public User(string uname, string ulname, string email, string pword) : this()
+        public User(string uname, string fname, string lname, string pword, string email) : this()
         {
-            this.uname = uname;
-            this.ulname = ulname;
-            this.email = email;
-            this.pword = pword;
+            this.Username = uname;
+            this.FirstName = fname;
+            this.LastName = lname;
+            this.Password = pword;
+            this.Email = email;
+
         }
     }
 }

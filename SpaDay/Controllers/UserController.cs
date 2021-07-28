@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SpaDay.Data;
 using SpaDay.Models;
+using SpaDay.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,26 +13,38 @@ namespace SpaDay.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.UserData = UserData.GetAll();
-            return View();
+            List<User> newList = new List<User>(UserData.GetAll());
+            return View(newList);
         }
 
         public IActionResult Add()
         {
-            return View();
+            AddUserViewModel newModel = new AddUserViewModel();
+            return View(newModel);
         }
 
-
-        public IActionResult SubmitAddUserForm(User newUser, string verify)
+        [HttpPost]
+        public IActionResult Add(AddUserViewModel newModel)
         {
-            if (verify != newUser.pword)
+            if (ModelState.IsValid)
             {
-                ViewBag.userinfo = newUser;
-                ViewBag.verify = verify;
-                return View();
+                if (newModel.VerifyPassword == newModel.Password)
+                {
+                    User newUser = new User(newModel.Username, newModel.FirstName, newModel.LastName,
+                        newModel.Password, newModel.Email);
+
+                    UserData.AddUser(newUser, newModel.VerifyPassword);
+                    return Redirect("/User/index");
+                }
+                else
+                {
+                    return View(newModel);
+                }
             }
-            UserData.AddUser(newUser, verify);
-            return Redirect("/User/index");
+            else
+            {
+                return View(newModel);
+            }
         }
 
 
